@@ -160,7 +160,7 @@
         app:layout_constraintEnd_toStartOf="@+id/multiply"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/eight"
-        app:layout_constraintTop_toBottomOf="@+id/modulus" />
+        app:layout_constraintTop_toBottomOf="@+id/bracketend" />
 
     <Button
         android:id="@+id/eight"
@@ -172,7 +172,7 @@
         app:layout_constraintEnd_toStartOf="@+id/nine"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/seven"
-        app:layout_constraintTop_toBottomOf="@+id/plusminus" />
+        app:layout_constraintTop_toBottomOf="@+id/bracketstart" />
 
     <Button
         android:id="@+id/multiply"
@@ -205,34 +205,34 @@
         android:text="C"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/seven"
-        app:layout_constraintEnd_toStartOf="@+id/plusminus"
+        app:layout_constraintEnd_toStartOf="@+id/bracketstart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+        app:layout_constraintTop_toBottomOf="@+id/output" />
 
     <Button
-        android:id="@+id/plusminus"
+        android:id="@+id/bracketstart"
         android:layout_width="90dp"
         android:layout_height="75dp"
-        android:text="+/-"
+        android:text="("
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/eight"
-        app:layout_constraintEnd_toStartOf="@+id/modulus"
+        app:layout_constraintEnd_toStartOf="@+id/bracketend"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/clear"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+        app:layout_constraintTop_toBottomOf="@+id/output" />
 
     <Button
-        android:id="@+id/modulus"
+        android:id="@+id/bracketend"
         android:layout_width="90dp"
         android:layout_height="75dp"
-        android:text="%"
+        android:text=")"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/nine"
         app:layout_constraintEnd_toStartOf="@+id/divide"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/plusminus"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+        app:layout_constraintStart_toEndOf="@+id/bracketstart"
+        app:layout_constraintTop_toBottomOf="@+id/output" />
 
     <Button
         android:id="@+id/divide"
@@ -243,17 +243,30 @@
         app:layout_constraintBottom_toTopOf="@+id/multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/modulus"
-        app:layout_constraintTop_toBottomOf="@+id/result" />
+        app:layout_constraintStart_toEndOf="@+id/bracketend"
+        app:layout_constraintTop_toBottomOf="@+id/output" />
 
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/input"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="24dp"
-        android:text="Result"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:text="Input"
+        android:textAlignment="textEnd"
         android:textSize="60dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:text="Output"
+        android:textAlignment="textEnd"
+        android:textSize="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/input"
+        tools:layout_editor_absoluteX="0dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
