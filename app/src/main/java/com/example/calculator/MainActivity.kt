@@ -2,7 +2,9 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +29,9 @@ class MainActivity : AppCompatActivity() {
         //Operator Buttons
         sum.setOnClickListener { appendOnClick(false, "+") }
         subtraction.setOnClickListener { appendOnClick(false, "-") }
-        multiply.setOnClickListener { appendOnClick(false, "×") }
-        divide.setOnClickListener { appendOnClick(false, "÷") }
+        multiply.setOnClickListener { appendOnClick(false, "*") }
+        divide.setOnClickListener { appendOnClick(false, "/") }
+        power.setOnClickListener { appendOnClick(false, "**") }
 
         bracketstart.setOnClickListener { appendOnClick(false, "(") }
         bracketend.setOnClickListener { appendOnClick(false, ")") }
@@ -37,18 +40,19 @@ class MainActivity : AppCompatActivity() {
             clear()
         }
 
-
-        equal.setOnClickListener { }
-
+        equal.setOnClickListener {
+            calculate()
+        }
 
     }
 
     //methods
 
     // appendOnClick() = add button text value in textview
-    fun appendOnClick(clear: Boolean, string: String) {
+    private fun appendOnClick(clear: Boolean, string: String) {
+
         if (clear) {
-            input.text = ""
+            output.text = ""
             input.append(string)
         } else {
             input.append(output.text)
@@ -56,13 +60,34 @@ class MainActivity : AppCompatActivity() {
             output.text = ""
         }
 
-
     }
 
-    //clear function
-    fun clear() {
+    //clear method clears the textview
+    private fun clear() {
         input.text = ""
         output.text = ""
+    }
+
+    //calculate method clears the textview
+    private fun calculate() {
+        try {
+            //Imported ExpressionBuilder Dependency
+            //Inside; Gradle Scripts > build.gradle(module:app) > dependency{}
+            // implementation 'net.objecthunter:exp4j:0.4.8'
+
+            val Input = ExpressionBuilder(input.text.toString()).build()
+            val Output = Input.evaluate()
+            val longOutput = Output.toLong()
+
+            if (Output == longOutput.toDouble()) {
+                output.text = longOutput.toString()
+            } else {
+                output.text = Output.toString()
+            }
+
+        } catch (e: Exception) {
+            Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
